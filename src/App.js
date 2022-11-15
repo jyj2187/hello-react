@@ -1,25 +1,82 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./css/App.css";
+import { Component } from "react";
+import MyComponet from "./Components/MyComponet";
+import CounterClass from "./Components/CounterClass";
+import Say from "./Components/Say";
+import EventPractice from "./Components/EventPractice";
+import EventFunctional from "./Components/EventFunctional";
+import Validation from "./Components/Validation";
+import ScrollBox from "./Components/ScrollBox";
+import Iteration from "./Components/Iteration";
+import LifeCycle from "./Components/LifeCycle";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// const name = "React";
+const name = undefined;
+const number = 0;
+const style = {
+	backgroundColor: "black",
+	color: "aqua",
+	fonsSize: "48px",
+	fontWeight: "bold",
+	padding: 16,
+};
+
+function getRandomColor() {
+	return "#" + Math.floor(Math.random() * 16777215).toString(16);
+}
+
+class App extends Component {
+	state = {
+		color: "#000000",
+	};
+
+	handleClick = () => {
+		this.setState({
+			color: getRandomColor(),
+		});
+	};
+
+	render() {
+		return (
+			<div style={style}>
+				<div>
+					<img src={logo} height="300" className="App-logo" alt="logo"></img>
+					<h1>{name} 안녕!</h1>
+				</div>
+				<ScrollBox ref={(ref) => (this.scrollBox = ref)} />
+				<button onClick={() => this.scrollBox.scorllToBottom()}>
+					맨 밑으로
+				</button>
+				<button onClick={() => this.scrollBox.scrollToTop()}>맨 위로</button>
+				<Validation />
+				<EventPractice />
+				<EventFunctional />
+				<MyComponet name="React" favoriteNum={7}>
+					리액트
+				</MyComponet>
+				<Say />
+				<CounterClass />
+				<div className="react">
+					<h2>삼항연산자</h2>
+					{name === "React" ? (
+						<h1>리액트입니다.</h1>
+					) : (
+						<h1>리액트가 아닙니다.</h1>
+					)}
+					<h2>AND 연산자</h2>
+					{name === "React" && <h1>리액트입니다.</h1>}
+					{number && <div>내용</div>}
+					<div>{name || "리액트"}</div>
+				</div>
+				<h1>동적 배열 리렌더링</h1>
+				<Iteration />
+				<h1>LifeCycle</h1>
+				<button onClick={this.handleClick}>랜덤 색상</button>
+				<LifeCycle color={this.state.color} />
+			</div>
+		);
+	}
 }
 
 export default App;
