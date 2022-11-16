@@ -98,4 +98,43 @@ const onInsert = useCallback(() => {
 - useRef를 통해 만든 객체 안의 current 값이 실제 엘리먼트를 가리킨다.
 - 추가로 컴포넌트 로컬 변수를 사용해야 할 때도 활용할 수 있다.
   > 여기서 로컬 변수란 렌더링과 상관없이 바뀔 수 있는 값을 의미한다.
-  
+  - ref 안의 값이 바뀌어도 컴포넌트는 렌더링되지 않는다.
+  - 렌더링과 관련되지 않은 값을 관리할 때만 이러한 방식으로 코드를 작성하자.
+
+## 커스텀 Hooks
+
+- 여러 컴포넌트에서 비슷한 기능을 공유할 경우, 커스텀 Hook을 작성하여 로직을 재사용할 수 있다.
+- 기존에 Hook을 사용하여 작성했던 로직을 분리한 뒤 export해주면 된다.
+  ex) useInputs.js
+
+```javascript
+import { useReducer } from "react";
+
+function reducer(state, action) {
+	return {
+		...state,
+		[action.name]: action.value,
+	};
+}
+
+export default function useInputs(initialForm) {
+	const [state, dispatch] = useReducer(reducer, initialForm);
+	const onChange = (e) => {
+		dispatch(e.target);
+	};
+	return [state, onChange];
+}
+```
+
+## 다른 Hooks
+
+- 다른 개발자가 만든 Hooks도 라이브러리로 설치하여 사용할 수 있다.
+- https://nikgraf.github.io/react-hooks/
+- https://github.com/rehooks/awesome-react-hooks
+
+## 정리
+
+- 클래스형 컴포넌트를 사용하지 않고도 Hooks 패턴을 사용하면 대부분의 기능을 구현할 수 있다.
+  > 그렇다고 setState를 사용하는 방식이 잘못된 것은 아니다.
+- 리액트 매뉴얼에서는 함수 컴포넌트와 Hooks를 사용할 것을 권장하고 있습니다.
+- 일단 함수 컴포넌트와 Hooks를 사용하고, 0000000필요한 상황에서는 클래스형 컴포넌트를 구현하는 것이 좋다.

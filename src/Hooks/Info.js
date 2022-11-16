@@ -11,12 +11,19 @@ function reducer(state, action) {
 function Info({ getName, savedName }) {
 	const [name, setName] = useState("");
 	const [nickname, setNickname] = useState("");
+	// const [state, dispatch] = useReducer(reducer, {
+	// 	reducerName: "",
+	// 	reducerNick: "",
+	// });
+
+	// 커스텀 Hook으로 교체
 	const [state, dispatch] = useReducer(reducer, {
 		reducerName: "",
 		reducerNick: "",
 	});
 
 	const { reducerName, reducerNick } = state;
+
 	const onChange = (e) => {
 		dispatch(e.target);
 	};

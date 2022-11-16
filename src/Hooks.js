@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Average from "./Hooks/Average";
 import CounterHook from "./Hooks/CounterHook";
 import Info from "./Hooks/Info";
+import UseRefSample from "./Hooks/UseRefSample";
 
 const Hooks = () => {
 	const [visible, setVisible] = useState(false);

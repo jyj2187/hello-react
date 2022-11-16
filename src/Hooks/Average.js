@@ -1,4 +1,3 @@
-import { isValidInputTimeValue } from "@testing-library/user-event/dist/utils";
 import React, { useCallback, useMemo, useRef, useState } from "react";
 // input의 상태가 변할때마다 getAverage 함수를 호출하게 된다.
 // => 최적화 필요!
