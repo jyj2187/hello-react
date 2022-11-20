@@ -7,11 +7,13 @@ import reportWebVitals from './reportWebVitals';
 import Styling from './Styling';
 import TodoApp from './TodoApp';
 import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import RouteApp from './RouteApp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-  //   <App />
+  /* //   <App />
   /**
    * 1장 ~ 7장 실습
    */
@@ -27,11 +29,13 @@ root.render(
   /**
    * 10 장 일정관리 애플리케이션 만들기
    */
-  <TodoApp />,
-  // </React.StrictMode>
+  //   <TodoApp />
+  /**
+   * 13장 리액트 라우터로 SPA 개발하기
+   */
+  <BrowserRouter>
+    <RouteApp />
+  </BrowserRouter>,
+  // </React.StrictMode>,
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
