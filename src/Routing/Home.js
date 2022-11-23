@@ -26,12 +26,6 @@ const Home = () => {
           <li>
             <Link to="/todo">10장 일정 관리 애플리케이션</Link>
           </li>
-          {/* <li>
-            <Link to="/profile/llems">정윤조 프로필</Link>
-          </li>
-          <li>
-            <Link to="/profile/liean">강도경 프로필</Link>
-          </li> */}
           <li>
             <Link to="/profiles">프로필 목록</Link>
             <ul>
@@ -51,6 +45,12 @@ const Home = () => {
           </li>
           <li>
             <Link to="/articles">게시글 목록</Link>
+          </li>
+          <li>
+            <Link to="/axios">Axios 실습</Link>
+          </li>
+          <li>
+            <Link to="/news">뉴스 보기</Link>
           </li>
         </ul>
       </div>
